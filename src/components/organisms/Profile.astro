@@ -8,7 +8,9 @@ import Tooltip from "@components/atoms/overlay/Tooltip.svelte";
 import UmamiStats from "@components/organisms/UmamiStats.astro";
 import { resolveImageAsset } from "@utils/asset-utils";
 import { Icon } from "astro-icon/components";
-import { profileConfig } from "@/config";
+import { profileConfig, resolveUmamiOptions, umamiConfig } from "@/config";
+import I18nKey from "@i18n/i18nKey";
+import { i18n } from "@i18n/translation";
 import type { ProfileWidget } from "@/types/sidebarConfig";
 import { url } from "../../utils/url-utils";
 
@@ -99,7 +101,34 @@ if (typeof avatarAsset !== "string") {
             </Button>}
         </div>
         <UmamiStats variant="profile" />
+        {config.statsPreview && !resolveUmamiOptions(umamiConfig) && (
+            <div class="profile-stats-preview">
+                <Icon name="material-symbols:visibility-outline-rounded" aria-hidden="true" />
+                <span>{i18n(I18nKey.profileStatsPageViews)} --</span>
+                <span aria-hidden="true">·</span>
+                <span>{i18n(I18nKey.profileStatsVisits)} --</span>
+            </div>
+        )}
     </div>
 	</Card>
 </div>
 
+<style>
+    .profile-stats-preview {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        margin-top: 0.75rem;
+        padding-top: 0.5rem;
+        border-top: 1px dashed var(--outline-variant);
+        color: var(--on-surface-variant);
+        font-size: 0.75rem;
+        line-height: 1.5;
+    }
+    .profile-stats-preview :global(svg) {
+        width: 1rem;
+        height: 1rem;
+        flex-shrink: 0;
+    }
+</style>

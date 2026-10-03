@@ -232,6 +232,8 @@ export type Favicon = {
 };
 
 export type ProfileConfig = {
+	/** 展示静态访问统计占位，仅用于外观预览，不加载统计服务。 */
+	statsPreview?: boolean;
 	avatar?: string;
 	name: string;
 	bio?: string;
