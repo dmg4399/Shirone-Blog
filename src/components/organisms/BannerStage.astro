@@ -1234,6 +1234,13 @@ const bannerPick = siteConfig.banner.pick === "random" ? "random" : "first";
 		syncBanner();
 		updateHeroTitleParallax();
 		updateClassicScrollState();
+		// 首页快捷入口的占位链接（href="#"）：仅展示图标，点击不跳转、不改动地址栏
+		stage.addEventListener("click", (event) => {
+			const link = (event.target as Element | null)?.closest<HTMLAnchorElement>(
+				'.banner-stage__link[href="#"]',
+			);
+			if (link) event.preventDefault();
+		});
 		if (!window.__shironeBannerBound) {
 			window.__shironeBannerBound = true;
 			window.addEventListener(WALLPAPER_MODE_CHANGE_EVENT, () => syncBanner());

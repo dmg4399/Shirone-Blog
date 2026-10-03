@@ -79,18 +79,12 @@ artifacts/lighthouse/*
 !artifacts/lighthouse/.gitkeep
 .lighthouseci/
 
+# 本地分析截图（不回传仓库）
+artifacts/*.png
+
 # generated AI skills plugin packages
 artifacts/shirone-ai-*
 
-# content repository (materialized by `pnpm content:sync`)
-/src/content/
-/src/data/*.ts
-/src/user/user-config.ts
-/src/config/FooterConfig.html
-/src/assets/images/
-/public/images/
-/public/assets/banner/
-/public/assets/music/
-/public/assets/projects/
-/public/assets/anime/*.webp
+# 单仓模式：本站为个人博客，内容与媒体随仓库一起版本管理
+# （历史上游采用双仓内容分离，此处不再排除；仅保留外部内容仓检出目录）
 /shirone-content-fq/

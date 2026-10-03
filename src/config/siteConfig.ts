@@ -12,7 +12,7 @@ import { withUserConfig } from "../utils/config-overlay.ts";
 export const siteConfig: SiteConfig = withUserConfig("site", {
 	site: "https://shirone.mysqil.com/",
 	base: "/",
-	title: "Shirone",
+	title: "₫₥",
 	subtitle: "A Material 3 anime blog",
 	// 电脑端顶栏标题与导航内容区域："left" 左对齐，"center" 居中。
 	topAppBar: {
@@ -52,14 +52,14 @@ export const siteConfig: SiteConfig = withUserConfig("site", {
 		tags: true, // 标签索引页 /tags/
 		about: true, // 关于页 /about/
 	},
-	lang: "en", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
+	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	// IANA time zone for precise post and moment timestamps. It is independent of lang.
 	timeZone: "Asia/Shanghai",
 	themeColor: {
-		hue: 315, // Default hue 0-360. 站点设计默认粉紫（偏二次元）；262 紫 / 345 粉 也可选
+		hue: 165, // Default hue 0-360；monochrome 风格下不参与输出（对齐参考站数值）
 		fixed: false, // Hide the theme color picker for visitors
 		// Dynamic Material 3 palette style (TonalSpot/Vibrant/Content/Expressive/Rainbow/FruitSalad/Monochrome/Neutral/Fidelity)
-		style: "tonalSpot",
+		style: "monochrome", // 黑白灰单色：全面对标参考站配色
 		// Design spec version: "2021" (MD3) or "2025" (M3 Expressive)。角色集一致，
 		// 差异仅在调色板派生（库的 colorSpec 静态为 2025 委托）
 		spec: "2025",
@@ -68,10 +68,10 @@ export const siteConfig: SiteConfig = withUserConfig("site", {
 	// "overlay" 覆盖透明（壁纸固定铺满视口 + 半透明卡片），"none" 纯色背景。
 	// 访客在“显示设置”中的选择会保存在浏览器中，并覆盖这里的默认值。
 	wallpaperMode: {
-		defaultMode: "banner",
+		defaultMode: "fullscreen",
 		// 全屏壁纸模式默认布局："classic" 内容紧随导航栏；"hero" 首页首屏整屏展示壁纸
 		fullscreen: {
-			layout: "classic",
+			layout: "hero",
 		},
 		// 覆盖透明模式默认参数（透明度 / 模糊半径 / 半透明卡片不透明度）
 		overlay: {
@@ -129,21 +129,23 @@ export const siteConfig: SiteConfig = withUserConfig("site", {
 		homeText: {
 			// 仅在首页 Banner 中显示，标题与副标题会上下居中排列。
 			enable: true,
-			title: "Shirone",
+			title: "₫₥のblog",
 			// 标题下方的快捷入口按钮：text + icon 渲染文字胶囊，仅 icon 渲染圆形图标按钮。
 			// 省略或空数组时不输出任何 DOM（零额外负担）。
+			// 当前为占位展示：跳转地址统一用 "#"（swup 已忽略 a[href="#"]，点击不会切换页面），
+			// 待确定真实地址后逐条替换 url 即可。
 			links: [
-				// { text: "GitHub", icon: "fa6-brands:github", url: "https://github.com/LyraVoid/Shirone" },
-				// { icon: "material-symbols:mail-outline-rounded", url: "/about/" },
-				// { icon: "material-symbols:favorite-outline-rounded", url: "/sponsor/" },
-				// { icon: "material-symbols:rss-feed-rounded", url: "/rss.xml" },
+				{ text: "Bilibili", icon: "simple-icons:bilibili", url: "#", ariaLabel: "Bilibili" },
+				{ icon: "material-symbols:mail-outline-rounded", url: "#", ariaLabel: "邮件" },
+				{ icon: "material-symbols:favorite-outline-rounded", url: "#", ariaLabel: "打赏支持" },
+				{ icon: "material-symbols:rss-feed-rounded", url: "#", ariaLabel: "RSS 订阅" },
 			],
 			subtitle: [
-				"特別なことはないけど、君がいると十分です",
-				"今でもあなたは私の光",
-				"君ってさ、知らないうちに私の毎日になってたよ",
-				"君と話すと、なんか毎日がちょっと楽しくなるんだ",
-				"今日はなんでもない日。でも、ちょっとだけいい日",
+				"把生活过成自己喜欢的样子",
+				"慢慢来，比较快",
+				"记录每一次小小的进步",
+				"愿你所行皆坦途，所遇皆温柔",
+				"今天也要元气满满呀",
 			],
 			typewriter: {
 				// 副标题逐字显示；关闭后直接显示完整副标题。

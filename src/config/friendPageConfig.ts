@@ -41,13 +41,13 @@ export const friendPageConfig: FriendPageConfig = withUserConfig("friendPage", {
 			content: "支持 HTTPS，以原创内容为主，能够正常访问且有持续更新",
 		},
 	],
-	// 友链可达性检测（check-flink）：默认开启，对接 https://check.fqzlr.com/result.json。
-	// 启用后：右上角状态徽标(绿/橙/红) + hover截图预览 + 暂存区/墓碑分级。
-	// 内容仓可用 config/friend-page.yaml 覆盖（friendPage.check.*），
+	// 友链可达性检测（check-flink）：默认关闭。启用后需填写自己的 resultUrl
+	// （check-flink 部署地址，可参考 https://github.com/fqzlr/check-flink），
 	// 或构建期设置环境变量 FRIEND_CHECK_RESULT_URL。
+	// 关闭时零额外请求、零徽标 DOM。
 	check: {
-		enable: true,
-		resultUrl: "https://check.fqzlr.com/result.json",
+		enable: false,
+		resultUrl: "",
 		cacheTtlMinutes: 30,
 		pendingZone: [1, 6],
 		graveyardZone: [7, 9999],

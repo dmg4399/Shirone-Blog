@@ -1,3 +1,52 @@
+# Repository Guidelines
+
+## Project Structure & Module Organization
+
+Shirone is a Material 3 Expressive blog theme built with Astro 7, Svelte 5, Tailwind 4, and Stylus.
+
+- `src/components/` — atomic layers: `atoms/`, `molecules/`, `organisms/`, plus `content/` and `system/`. Import across layers via `@components/<layer>/<file>`.
+- `src/layouts/`, `src/pages/` — page templates and routes.
+- `src/config/` and `src/types/` — configuration modules and shared types.
+- `src/content/`, `src/data/`, `public/` — posts, structured data, and static assets.
+- `src/i18n/` — UI copy; add keys to `i18nKey.ts` and every locale under `languages/`.
+- `scripts/` — build/content/font/icon pipelines; `docs/` and `rules/` — reference docs; `tests/` — Playwright specs (`tests/site/`) and Node unit tests (`*.test.mjs`).
+
+## Build, Test, and Development Commands
+
+Requires Node.js 22.12+ and pnpm 9 (repo pins `pnpm@9.14.4`).
+
+```bash
+pnpm install --frozen-lockfile    # install dependencies
+pnpm dev                          # dev server at http://localhost:4321
+pnpm build                        # production build + Pagefind index
+pnpm check                        # astro check; must report 0 errors
+pnpm test                         # Playwright site tests
+node --test "tests/**/*.test.mjs" # unit tests
+pnpm format                       # Biome formatting (mandatory before commit)
+pnpm type-check                   # tsc isolated declarations
+pnpm check:manifest               # atom manifest consistency
+```
+
+On Windows PowerShell, use `pnpm.cmd` and `npx.cmd`.
+
+## Coding Style & Naming Conventions
+
+Biome enforces tab indentation, double quotes, and organized imports (`pnpm exec biome ci ./src` for read-only checks). Components use PascalCase (`PostCard.astro`); utilities and configs use camelCase (`url-utils.ts`, `siteConfig.ts`). Use semantic tokens (`--m3e-*`, `--shape-corner-*`, surface colors) instead of hard-coded values, and never hard-code user-visible strings. Keep each Svelte file in a single syntax mode (runes or legacy).
+
+## Testing Guidelines
+
+Playwright specs live in `tests/site/*.spec.ts` and run against the dev server. Unit tests use `node:test` and mirror source names (`permalink-utils.test.mjs`). Add or update specs for behavior changes; run `tests/site/a11y.spec.ts` for UI work and include screenshots for intentional visual differences.
+
+## Commit & Pull Request Guidelines
+
+Follow Conventional Commits with a concise English subject, e.g. `feat(banner): support random hero image` or `fix(music): hide lyrics when idle`. Keep one concern per commit. PRs should state the problem, the behavior change, verification commands, and any config/accessibility impact; include before/after screenshots for visual changes.
+
+---
+
+## Appendix: Original Agent Instructions (archived)
+
+> 以下为原 Agent 指令版内容（被上方贡献指南版本替换前），保留存档供 AI 开发参考。
+
 # Agent Instructions for Shirone — M3E Blog Theme
 
 ## Summary
