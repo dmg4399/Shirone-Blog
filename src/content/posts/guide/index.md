@@ -5,8 +5,8 @@ updated: 2026-08-26
 pinned: true
 description: "A comprehensive guide to post authoring, frontmatter schema, Markdown extensions, encryption, and media in Shirone."
 image: "./cover.jpeg"
-tags: ["Shirone", "Guide", "Markdown", "M3E", "Blogging"]
-category: Guides
+tags: [Shirone, 指南, Markdown, M3E, 博客]
+category: 指南
 draft: false
 ---
 

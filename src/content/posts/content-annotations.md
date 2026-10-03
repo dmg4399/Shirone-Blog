@@ -2,8 +2,8 @@
 title: Content Annotations
 published: 2026-08-27
 description: Add compact, accessible supporting notes to Shirone articles without interrupting the reading flow.
-tags: [Demo, Markdown, Annotation, Shirone]
-category: Guides
+tags: [演示, Markdown, 注释, Shirone]
+category: 指南
 lang: en
 draft: false
 ---

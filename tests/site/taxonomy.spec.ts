@@ -77,7 +77,7 @@ test.describe("标签索引页 /tags/", () => {
 	test("渲染页头与全部标签 chip（名称 + 计数徽标 + 归档过滤链接）", async ({
 		page,
 	}) => {
-		await expect(page.locator(".page-header__title")).toHaveText("Tags");
+		await expect(page.locator(".page-header__title")).toHaveText("标签");
 		// 页头装饰图标：SSR 直出（astro-icon 构建期内联，非空）
 		await expect(page.locator(".page-header__icon svg")).toHaveCount(1);
 		await expect(
@@ -86,22 +86,30 @@ test.describe("标签索引页 /tags/", () => {
 			),
 		).toHaveCount(1);
 		const chips = page.locator(".tag-index__chip");
-		await expect(chips).toHaveCount(7);
-		const first = chips.first();
-		await expect(first).toContainText("Blogging");
-		await expect(first.locator(".tag-index__count")).toHaveText("4");
-		await expect(first).toHaveAttribute("href", "/archive/?tag=Blogging");
-		await expect(page.locator("#category-bar-region")).toBeHidden();
+		await expect(chips).toHaveCount(27);
+		const blogging = page.getByRole("link", {
+			name: "查看“博客”标签下的所有文章",
+			exact: true,
+		});
+		await expect(blogging).toContainText("博客");
+		await expect(blogging.locator(".tag-index__count")).toHaveText("4");
+		await expect(blogging).toHaveAttribute(
+			"href",
+			/\/archive\/\?tag=%E5%8D%9A%E5%AE%A2/,
+		);
 		await expect(
-			page.locator('widget-layout[data-id="categories"]'),
-		).toBeHidden();
-		await expect(page.locator('widget-layout[data-id="tags"]')).toBeHidden();
-		await expect(page.locator(".expand-btn")).toHaveCount(0);
+			chips.filter({ hasText: /Accessibility|Blogging|Demo|Video/ }),
+		).toHaveCount(0);
 	});
 
 	test("标签 chip 可跳转到归档页对应过滤", async ({ page }) => {
-		await page.locator(".tag-index__chip").filter({ hasText: "Video" }).click();
-		await expect(page).toHaveURL(/[?&]tag=Video/);
+		await page
+			.getByRole("link", { name: "查看“视频”标签下的所有文章", exact: true })
+			.click();
+		await expect(page).toHaveURL(/[?&]tag=%E8%A7%86%E9%A2%91/);
+		await expect(page.locator(".archive-panel")).toContainText(
+			"Include Video in the Posts",
+		);
 	});
 });
 

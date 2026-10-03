@@ -316,6 +316,7 @@ export const es: Translation = {
 	[Key.paginationPage]: "Página {page}",
 	[Key.paginationJump]: "Ir a la página",
 	[Key.tagsViewAll]: "Ver todas las etiquetas",
+	[Key.tagViewPosts]: "Ver todas las publicaciones con la etiqueta {tag}",
 
 	[Key.author]: "Autor",
 	[Key.publishedAt]: "Publicado el",

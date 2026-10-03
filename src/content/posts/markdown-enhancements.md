@@ -3,10 +3,10 @@ title: Shirone Markdown Enhancements
 published: 2026-08-19
 pinned: true
 description: Explore Shirone's custom Markdown extensions, expressive components, and authoring syntax.
-tags: [Demo, Markdown, Extensions, Theme, Shirone]
+tags: [演示, Markdown, 扩展, 主题, Shirone]
 series: markdown-syntax-guide
 seriesOrder: 3
-category: Guides
+category: 指南
 lang: en
 draft: false
 ---

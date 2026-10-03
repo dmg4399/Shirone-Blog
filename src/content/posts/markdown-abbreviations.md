@@ -2,8 +2,8 @@
 title: Markdown Abbreviations
 published: 2026-08-28
 description: Define common acronyms once and keep their full meaning available in normal article text.
-tags: [Demo, Markdown, Typography, Shirone]
-category: Guides
+tags: [演示, Markdown, 排版, Shirone]
+category: 指南
 lang: en
 draft: false
 ---

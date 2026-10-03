@@ -300,6 +300,7 @@ export const th: Translation = {
 	[Key.paginationPage]: "หน้า {page}",
 	[Key.paginationJump]: "ไปที่หน้า",
 	[Key.tagsViewAll]: "ดูแท็กทั้งหมด",
+	[Key.tagViewPosts]: "ดูบทความทั้งหมดที่มีแท็ก {tag}",
 
 	[Key.author]: "ผู้เขียน",
 	[Key.publishedAt]: "เผยแพร่เมื่อ",

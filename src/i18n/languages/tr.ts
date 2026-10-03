@@ -316,6 +316,7 @@ export const tr: Translation = {
 	[Key.paginationPage]: "Sayfa {page}",
 	[Key.paginationJump]: "Sayfaya git",
 	[Key.tagsViewAll]: "Tüm etiketleri gör",
+	[Key.tagViewPosts]: "{tag} etiketli tüm yazıları gör",
 
 	[Key.author]: "Yazar",
 	[Key.publishedAt]: "Yayınlanma:",

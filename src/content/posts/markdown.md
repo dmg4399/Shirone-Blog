@@ -2,10 +2,10 @@
 title: Markdown Example
 published: 2023-10-01
 description: A simple example of a Markdown blog post.
-tags: [Markdown, Blogging, Demo]
+tags: [Markdown, 博客, 演示]
 series: markdown-syntax-guide
 seriesOrder: 1
-category: Examples
+category: 示例
 draft: false
 ---
 

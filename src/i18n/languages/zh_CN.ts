@@ -303,6 +303,7 @@ export const zh_CN: Translation = {
 	[Key.paginationPage]: "第 {page} 页",
 	[Key.paginationJump]: "跳转到页面",
 	[Key.tagsViewAll]: "查看全部标签",
+	[Key.tagViewPosts]: "查看“{tag}”标签下的所有文章",
 
 	[Key.author]: "作者",
 	[Key.publishedAt]: "发布于",

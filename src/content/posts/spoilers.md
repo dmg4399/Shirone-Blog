@@ -2,8 +2,8 @@
 title: Markdown Spoilers
 published: 2026-08-28
 description: Hide inline answers while keeping spoiler content accessible in Shirone Markdown.
-tags: [Demo, Markdown, Accessibility, Shirone]
-category: Guides
+tags: [演示, Markdown, 无障碍, Shirone]
+category: 指南
 lang: en
 draft: false
 ---
