@@ -497,6 +497,10 @@ test.describe("banner wallpaper", () => {
 
 	test("mobile home loads only mobile image resources", async ({ page }) => {
 		await page.setViewportSize({ width: 390, height: 844 });
+		// Wave geometry belongs to banner mode, regardless of the site default.
+		await page.addInitScript(() =>
+			localStorage.setItem("wallpaper-mode", "banner"),
+		);
 		const requests: string[] = [];
 		page.on("request", (request) => {
 			if (isBannerAsset(request.url())) requests.push(request.url());
@@ -504,9 +508,46 @@ test.describe("banner wallpaper", () => {
 
 		await page.goto("/", { waitUntil: "domcontentloaded" });
 		await waitForBannerState(page, true);
+		await expect(page.locator("html")).toHaveAttribute(
+			"data-wallpaper-mode",
+			"banner",
+		);
 		await expectWavesAnimated(page, true);
 		await expectBannerOverlap(page);
 		await expectWaveGeometry(page, "0.72");
+		expect(requests.some((request) => isBannerVariant(request, "mobile"))).toBe(
+			true,
+		);
+		expect(
+			requests.some((request) => isBannerVariant(request, "desktop")),
+		).toBe(false);
+	});
+
+	test("mobile fullscreen hero hides waves and loads only mobile images", async ({
+		page,
+	}) => {
+		await page.setViewportSize({ width: 390, height: 844 });
+		await page.addInitScript(() => {
+			localStorage.setItem("wallpaper-mode", "fullscreen");
+			localStorage.setItem("wallpaper-fullscreen-layout", "hero");
+		});
+		const requests: string[] = [];
+		page.on("request", (request) => {
+			if (isBannerAsset(request.url())) requests.push(request.url());
+		});
+		await page.goto("/", { waitUntil: "domcontentloaded" });
+		await waitForBannerState(page, true);
+		await expect(page.locator("html")).toHaveAttribute(
+			"data-wallpaper-mode",
+			"fullscreen",
+		);
+		await expect(page.locator("html")).toHaveAttribute(
+			"data-fullscreen-layout",
+			"hero",
+		);
+		await expect(page.locator("#banner-wrapper")).toBeVisible();
+		await expect(page.locator(".banner-waves")).toBeHidden();
+		await expect(page.locator(".banner-stage__gradient")).toBeHidden();
 		expect(requests.some((request) => isBannerVariant(request, "mobile"))).toBe(
 			true,
 		);
@@ -519,6 +560,9 @@ test.describe("banner wallpaper", () => {
 		page,
 	}) => {
 		await page.setViewportSize({ width: 768, height: 900 });
+		await page.addInitScript(() =>
+			localStorage.setItem("wallpaper-mode", "banner"),
+		);
 		await page.goto("/", { waitUntil: "domcontentloaded" });
 		await waitForBannerState(page, true);
 		await expectWavesAnimated(page, true);
