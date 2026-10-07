@@ -14,7 +14,7 @@ export const announcementConfig: AnnouncementConfig = withUserConfig(
 		link: {
 			enable: true, // 启用链接
 			text: "GitHub", // 链接文本
-			url: "https://github.com", // 链接 URL
+			url: "https://github.com/dmg4399", // 链接 URL
 			external: true, // 外部链接
 		},
 		// 公告板（FAB 弹窗列表）：enable: false 或 items 为空时不渲染按钮与弹窗（零额外负担）

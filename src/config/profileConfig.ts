@@ -11,10 +11,18 @@ export const profileConfig: ProfileConfig = withUserConfig("profile", {
 	bio: "躬身入局，心为主理，行有尺度，自持本心.",
 	statsPreview: true,
 	links: [
-		// 外观预览用占位链接，待配置实际地址。
+		// 尚未配置的社交入口保留占位链接。
 		{ name: "QQ群", icon: "simple-icons:tencentqq", url: "#" },
-		{ name: "Bilibili", icon: "simple-icons:bilibili", url: "#" },
-		{ name: "GitHub", icon: "simple-icons:github", url: "#" },
+		{
+			name: "Bilibili",
+			icon: "simple-icons:bilibili",
+			url: "https://space.bilibili.com/651199847",
+		},
+		{
+			name: "GitHub",
+			icon: "simple-icons:github",
+			url: "https://github.com/dmg4399",
+		},
 		{ name: "Email", icon: "material-symbols:mail-outline", url: "#" },
 		{ name: "RSS", icon: "material-symbols:rss-feed", url: "#" },
 	],

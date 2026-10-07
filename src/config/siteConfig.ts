@@ -132,13 +132,29 @@ export const siteConfig: SiteConfig = withUserConfig("site", {
 			title: "₫₥のblog",
 			// 标题下方的快捷入口按钮：text + icon 渲染文字胶囊，仅 icon 渲染圆形图标按钮。
 			// 省略或空数组时不输出任何 DOM（零额外负担）。
-			// 当前为占位展示：跳转地址统一用 "#"（swup 已忽略 a[href="#"]，点击不会切换页面），
-			// 待确定真实地址后逐条替换 url 即可。
+			// 未配置的入口使用 "#" 占位；已配置的社交入口跳转个人主页。
 			links: [
-				{ text: "Bilibili", icon: "simple-icons:bilibili", url: "#", ariaLabel: "Bilibili" },
-				{ icon: "material-symbols:mail-outline-rounded", url: "#", ariaLabel: "邮件" },
-				{ icon: "material-symbols:favorite-outline-rounded", url: "#", ariaLabel: "打赏支持" },
-				{ icon: "material-symbols:rss-feed-rounded", url: "#", ariaLabel: "RSS 订阅" },
+				{
+					text: "Bilibili",
+					icon: "simple-icons:bilibili",
+					url: "https://space.bilibili.com/651199847",
+					ariaLabel: "Bilibili",
+				},
+				{
+					icon: "material-symbols:mail-outline-rounded",
+					url: "#",
+					ariaLabel: "邮件",
+				},
+				{
+					icon: "material-symbols:favorite-outline-rounded",
+					url: "#",
+					ariaLabel: "打赏支持",
+				},
+				{
+					icon: "material-symbols:rss-feed-rounded",
+					url: "#",
+					ariaLabel: "RSS 订阅",
+				},
 			],
 			subtitle: [
 				"把生活过成自己喜欢的样子",

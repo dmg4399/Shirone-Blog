@@ -48,13 +48,13 @@ export const aboutMilestones: AboutMilestone[] = [
 	},
 ];
 
-/** 站长社交链接（占位，请替换为自己的账号） */
+/** 站长社交链接 */
 export const aboutSocialLinks: AboutSocialLink[] = [
 	{
 		platform: "GitHub",
-		handle: "your-github",
+		handle: "dmg4399",
 		note: "代码与开源",
-		href: "https://github.com",
+		href: "https://github.com/dmg4399",
 		icon: "fa6-brands:github",
 		brand: "github",
 	},
