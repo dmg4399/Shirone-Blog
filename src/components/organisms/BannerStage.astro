@@ -49,7 +49,9 @@ const optimizeBannerImage = async (
 	}
 
 	const requestedWidths =
-		viewport === "desktop" ? [1280, 1600, 1920] : [640, 828, 1080];
+		viewport === "desktop"
+			? [1280, 1600, 1920, 2560, 3840, 5120, 7680]
+			: [640, 828, 1080];
 	const widths = [
 		...new Set([
 			...requestedWidths.filter((width) => width <= resolved.width),
@@ -64,8 +66,8 @@ const optimizeBannerImage = async (
 			})),
 		);
 	const [avif, webp] = await Promise.all([
-		createCandidates("avif", 55),
-		createCandidates("webp", 68),
+		createCandidates("avif", viewport === "desktop" ? 80 : 55),
+		createCandidates("webp", viewport === "desktop" ? 90 : 68),
 	]);
 	const fallback = webp.at(-1)?.image.src ?? resolved.src;
 	return {

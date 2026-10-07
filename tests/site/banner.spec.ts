@@ -337,6 +337,58 @@ test.describe("banner wallpaper", () => {
 		expect(html).not.toContain("/assets/banner/desktop/1.webp");
 	});
 
+	test("high-DPI desktop loads a 4K wallpaper without upscaling the source", async ({
+		browser,
+		baseURL,
+	}) => {
+		const context = await browser.newContext({
+			baseURL,
+			viewport: { width: 1920, height: 1080 },
+			deviceScaleFactor: 2,
+		});
+		try {
+			const page = await context.newPage();
+			await page.goto("/", {
+				waitUntil: "domcontentloaded",
+			});
+			const image = page.locator(".banner-stage__image--front");
+			const sourceWidth = Number(await image.getAttribute("width"));
+			test.skip(sourceWidth < 3840, "requires a wallpaper at least 4K wide");
+			await expect(image).toHaveJSProperty("complete", true);
+			const currentSrc = await image.evaluate(
+				(element) => (element as HTMLImageElement).currentSrc,
+			);
+			expect(isBannerVariant(currentSrc, "desktop")).toBe(true);
+			const requestedWidth = Number(new URL(currentSrc).searchParams.get("w"));
+			expect(requestedWidth).toBeGreaterThanOrEqual(3840);
+			expect(requestedWidth).toBeLessThanOrEqual(sourceWidth);
+			expect(
+				await image.evaluate(
+					(element) => (element as HTMLImageElement).naturalWidth,
+				),
+			).toBeGreaterThan(0);
+			await page.setViewportSize({ width: 390, height: 844 });
+			await expect
+				.poll(async () =>
+					isBannerVariant(
+						await image.evaluate(
+							(element) => (element as HTMLImageElement).currentSrc,
+						),
+						"mobile",
+					),
+				)
+				.toBe(true);
+			const mobileSrc = await image.evaluate(
+				(element) => (element as HTMLImageElement).currentSrc,
+			);
+			expect(
+				Number(new URL(mobileSrc).searchParams.get("w")),
+			).toBeLessThanOrEqual(1080);
+		} finally {
+			await context.close();
+		}
+	});
+
 	test("desktop exposes subtitle typewriter controls", async ({ page }) => {
 		await page.goto("/", { waitUntil: "domcontentloaded" });
 		await waitForBannerState(page, true);
