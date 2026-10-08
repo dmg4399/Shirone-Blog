@@ -157,7 +157,7 @@ export const siteConfig: SiteConfig = withUserConfig("site", {
 				},
 			],
 			subtitle: [
-				"把生活过成自己喜欢的样子",
+				"No pian, no gian",
 				"慢慢来，比较快",
 				"记录每一次小小的进步",
 				"愿你所行皆坦途，所遇皆温柔",

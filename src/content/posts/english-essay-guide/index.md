@@ -1,5 +1,6 @@
 ---
 title: 我的大作文写作模板：从审题到成文
+image: ./cover.webp
 published: 2026-10-07
 draft: false
 category: 考研英语

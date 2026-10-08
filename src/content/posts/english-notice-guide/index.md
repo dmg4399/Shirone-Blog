@@ -1,5 +1,6 @@
 ---
 title: 我的 Notice 写作模板：从招募通知到活动通知
+image: ./cover.webp
 published: 2026-10-07
 description: 按我的通知模板，逐步拆解审题、格式、要求与职责、报名方式，最后用研究项目招募、志愿者招募和讲座通知练习成文。
 category: 考研英语

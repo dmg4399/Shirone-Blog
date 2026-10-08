@@ -1,5 +1,6 @@
 ---
 title: 我的英语信件模板：私人信与公务信怎么写
+image: ./cover.webp
 published: 2026-10-07
 draft: false
 category: 考研英语
